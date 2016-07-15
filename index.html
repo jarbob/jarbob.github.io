@@ -264,6 +264,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/15/给hexo博客下用hexo-generator-feed配置的的rss穿上外衣/" itemprop="url">
+                  给hexo博客下用hexo-generator-feed配置的的rss穿上外衣
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-15T19:49:24+08:00" content="2016-07-15">
+              2016-07-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/15/给hexo博客下用hexo-generator-feed配置的的rss穿上外衣/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/15/给hexo博客下用hexo-generator-feed配置的的rss穿上外衣/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="添加hexo-generator-feed插件"><a href="#添加hexo-generator-feed插件" class="headerlink" title="添加hexo-generator-feed插件"></a>添加hexo-generator-feed插件</h2><p>这里不详细说了,提一下注意事项:  </p>
+<ul>
+<li>npm feed插件的时候记得加上 –save</li>
+<li><p>根目录下的配置文件长这样:</p>
+<pre><code>plugin:
+- hexo-generator-feed
+
+#Feed Atom
+feed:
+    type: rss2  #或者atom
+    path: rss2.xml #跟上面一致atom.xml
+    limit: 20    #rss条目数最大值
+    hub:   #这个可以不填
+</code></pre></li>
+<li><p>配置完成,直接<code>hexo g</code>,会在public文件夹下生成xml文件  </p>
+</li>
+</ul>
+<h2 id="问题来了"><a href="#问题来了" class="headerlink" title="问题来了"></a>问题来了</h2><p>当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree<br>所以重点了,本文叫你怎么添加样式文件,甚至在<code>deploy -g</code>的时候也是全自动生成的<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/15/给hexo博客下用hexo-generator-feed配置的的rss穿上外衣/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/15/PHP-mysql-PDO-和mysql类的封装/" itemprop="url">
                   PHP mysql PDO 和mysql类的封装
                 </a>
@@ -333,13 +472,11 @@
 
       
         
-          
-          前言
-什么是pdo?PDO一是PHP数据对象（PHP Data Object）的缩写,是PHP5以后的一种mysql数据驱动对象。现在大多数php框架都包含了对他的支持。
-为什么要自己封装?个人觉得只有自己写的东西,才是最清楚的。当然不否定使用现成的框架,或者再其基础上加以改造   
-这篇博文主要展
-          ...
-
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>什么是pdo?<br>PDO一是PHP数据对象（PHP Data Object）的缩写,是PHP5以后的一种mysql数据驱动对象。<br>现在大多数php框架都包含了对他的支持。</li>
+<li>为什么要自己封装?<br>个人觉得只有自己写的东西,才是最清楚的。当然不否定使用现成的框架,或者再其基础上加以改造   </li>
+<li><p>这篇博文主要展示在统一接口下轻松实现两种数据驱动类的切换。</p>
+<h2 id="公共接口-i-DAo-interface-php"><a href="#公共接口-i-DAo-interface-php" class="headerlink" title="公共接口 i_DAo.interface.php"></a>公共接口 i_DAo.interface.php</h2><p>限制两个数据对象应该具有相同的方法。代码如下:</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/15/PHP-mysql-PDO-和mysql类的封装/#more" rel="contents">
               阅读全文 &raquo;
@@ -461,12 +598,8 @@
 
       
         
-          
-          前言　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax失效，另外还要考虑到兼容性，一些h5下的技术如websocket也没法使用。
-尝试　　既然要解决跨域，那么首先考虑到的图片ping。代码大概如下：
-var 
-          ...
-
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax失效，另外还要考虑到兼容性，一些h5下的技术如websocket也没法使用。</p>
+<h2 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h2><p>　　既然要解决跨域，那么首先考虑到的图片ping。代码大概如下：<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/10/利用js模拟ping实现智能选择线路跳转网站/#more" rel="contents">
               阅读全文 &raquo;
@@ -542,7 +675,7 @@ var
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -550,7 +683,7 @@ var
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -559,7 +692,7 @@ var
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

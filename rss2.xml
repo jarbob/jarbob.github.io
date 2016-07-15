@@ -9,8 +9,65 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>发呆意淫，代码发烧，冥想笔记</description>
-    <pubDate>Fri, 15 Jul 2016 04:34:30 GMT</pubDate>
+    <pubDate>Fri, 15 Jul 2016 12:12:12 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>给hexo博客下用hexo-generator-feed配置的的rss穿上外衣</title>
+      <link>http://jarbob.com/2016/07/15/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E4%B8%8B%E7%94%A8hexo-generator-feed%E9%85%8D%E7%BD%AE%E7%9A%84%E7%9A%84rss%E7%A9%BF%E4%B8%8A%E5%A4%96%E8%A1%A3/</link>
+      <guid>http://jarbob.com/2016/07/15/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E4%B8%8B%E7%94%A8hexo-generator-feed%E9%85%8D%E7%BD%AE%E7%9A%84%E7%9A%84rss%E7%A9%BF%E4%B8%8A%E5%A4%96%E8%A1%A3/</guid>
+      <pubDate>Fri, 15 Jul 2016 11:49:24 GMT</pubDate>
+      <description>
+      
+        &lt;h2 id=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;a href=&quot;#添加hexo-generator-feed插件&quot; class=&quot;headerlink&quot; title=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;/a&gt;添加hexo-generator-feed插件&lt;/h2&gt;&lt;p&gt;这里不详细说了,提一下注意事项:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;npm feed插件的时候记得加上 –save&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根目录下的配置文件长这样:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;plugin:
+- hexo-generator-feed
+
+#Feed Atom
+feed:
+    type: rss2  #或者atom
+    path: rss2.xml #跟上面一致atom.xml
+    limit: 20    #rss条目数最大值
+    hub:   #这个可以不填
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置完成,直接&lt;code&gt;hexo g&lt;/code&gt;,会在public文件夹下生成xml文件  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;问题来了&quot;&gt;&lt;a href=&quot;#问题来了&quot; class=&quot;headerlink&quot; title=&quot;问题来了&quot;&gt;&lt;/a&gt;问题来了&lt;/h2&gt;&lt;p&gt;当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree&lt;br&gt;所以重点了,本文叫你怎么添加样式文件,甚至在&lt;code&gt;deploy -g&lt;/code&gt;的时候也是全自动生成的&lt;br&gt;
+      
+      </description>
+      
+      <content:encoded>&lt;h2 id=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;a href=&quot;#添加hexo-generator-feed插件&quot; class=&quot;headerlink&quot; title=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;/a&gt;添加hexo-generator-feed插件&lt;/h2&gt;&lt;p&gt;这里不详细说了,提一下注意事项:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;npm feed插件的时候记得加上 –save&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根目录下的配置文件长这样:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;plugin:
+- hexo-generator-feed
+
+#Feed Atom
+feed:
+    type: rss2  #或者atom
+    path: rss2.xml #跟上面一致atom.xml
+    limit: 20    #rss条目数最大值
+    hub:   #这个可以不填
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置完成,直接&lt;code&gt;hexo g&lt;/code&gt;,会在public文件夹下生成xml文件  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;问题来了&quot;&gt;&lt;a href=&quot;#问题来了&quot; class=&quot;headerlink&quot; title=&quot;问题来了&quot;&gt;&lt;/a&gt;问题来了&lt;/h2&gt;&lt;p&gt;当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree&lt;br&gt;所以重点了,本文叫你怎么添加样式文件,甚至在&lt;code&gt;deploy -g&lt;/code&gt;的时候也是全自动生成的&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;解决问题&quot;&gt;&lt;a href=&quot;#解决问题&quot; class=&quot;headerlink&quot; title=&quot;解决问题&quot;&gt;&lt;/a&gt;解决问题&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;在&lt;code&gt;博客根目录/node_modules/hexo-generator-feed/&lt;/code&gt; 文件夹下添加css/rss.css  &lt;/li&gt;
+&lt;li&gt;修改&lt;code&gt;博客根目录/node_modules/hexo-generator-feed/lib/generator.js&lt;/code&gt;的代码  &lt;/li&gt;
+&lt;li&gt;我会在下面提供要修改的代码的资源链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;资源链接&quot;&gt;&lt;a href=&quot;#资源链接&quot; class=&quot;headerlink&quot; title=&quot;资源链接&quot;&gt;&lt;/a&gt;资源链接&lt;/h2&gt;&lt;p&gt;是的,还是&lt;a href=&quot;https://github.com/jarbob/hexo-generator-feed-rebulid&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gayhub&lt;/a&gt;&lt;br&gt;自己修改了,如果出错才改回去,不建议直接覆盖^_^  &lt;/p&gt;
+</content:encoded>
+      
+      <comments>http://jarbob.com/2016/07/15/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E4%B8%8B%E7%94%A8hexo-generator-feed%E9%85%8D%E7%BD%AE%E7%9A%84%E7%9A%84rss%E7%A9%BF%E4%B8%8A%E5%A4%96%E8%A1%A3/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>PHP mysql PDO 和mysql类的封装</title>
@@ -20,7 +77,10 @@
       <description>
       
         &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;什么是pdo?&lt;br&gt;PDO一是PHP数据对象（PHP Data Object）的缩写,是PHP5以后的一种mysql数据驱动对
+&lt;li&gt;什么是pdo?&lt;br&gt;PDO一是PHP数据对象（PHP Data Object）的缩写,是PHP5以后的一种mysql数据驱动对象。&lt;br&gt;现在大多数php框架都包含了对他的支持。&lt;/li&gt;
+&lt;li&gt;为什么要自己封装?&lt;br&gt;个人觉得只有自己写的东西,才是最清楚的。当然不否定使用现成的框架,或者再其基础上加以改造   &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这篇博文主要展示在统一接口下轻松实现两种数据驱动类的切换。&lt;/p&gt;
+&lt;h2 id=&quot;公共接口-i-DAo-interface-php&quot;&gt;&lt;a href=&quot;#公共接口-i-DAo-interface-php&quot; class=&quot;headerlink&quot; title=&quot;公共接口 i_DAo.interface.php&quot;&gt;&lt;/a&gt;公共接口 i_DAo.interface.php&lt;/h2&gt;&lt;p&gt;限制两个数据对象应该具有相同的方法。代码如下:&lt;/p&gt;
       
       </description>
       
@@ -29,6 +89,7 @@
 &lt;li&gt;为什么要自己封装?&lt;br&gt;个人觉得只有自己写的东西,才是最清楚的。当然不否定使用现成的框架,或者再其基础上加以改造   &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;这篇博文主要展示在统一接口下轻松实现两种数据驱动类的切换。&lt;/p&gt;
 &lt;h2 id=&quot;公共接口-i-DAo-interface-php&quot;&gt;&lt;a href=&quot;#公共接口-i-DAo-interface-php&quot; class=&quot;headerlink&quot; title=&quot;公共接口 i_DAo.interface.php&quot;&gt;&lt;/a&gt;公共接口 i_DAo.interface.php&lt;/h2&gt;&lt;p&gt;限制两个数据对象应该具有相同的方法。代码如下:&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;?php
 /**
  * Created by PhpStorm.
@@ -371,12 +432,13 @@ class Model{
       <pubDate>Sun, 10 Jul 2016 14:02:26 GMT</pubDate>
       <description>
       
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax失效，另外还要考虑到兼容性，一些h5下的技术如websocket也没法使用。&lt;/p&gt;
+&lt;h2 id=&quot;尝试&quot;&gt;&lt;a href=&quot;#尝试&quot; class=&quot;headerlink&quot; title=&quot;尝试&quot;&gt;&lt;/a&gt;尝试&lt;/h2&gt;&lt;p&gt;　　既然要解决跨域，那么首先考虑到的图片ping。代码大概如下：&lt;br&gt;
       
       </description>
       
       <content:encoded>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax失效，另外还要考虑到兼容性，一些h5下的技术如websocket也没法使用。&lt;/p&gt;
-&lt;h2 id=&quot;尝试&quot;&gt;&lt;a href=&quot;#尝试&quot; class=&quot;headerlink&quot; title=&quot;尝试&quot;&gt;&lt;/a&gt;尝试&lt;/h2&gt;&lt;p&gt;　　既然要解决跨域，那么首先考虑到的图片ping。代码大概如下：&lt;/p&gt;
+&lt;h2 id=&quot;尝试&quot;&gt;&lt;a href=&quot;#尝试&quot; class=&quot;headerlink&quot; title=&quot;尝试&quot;&gt;&lt;/a&gt;尝试&lt;/h2&gt;&lt;p&gt;　　既然要解决跨域，那么首先考虑到的图片ping。代码大概如下：&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;pre&gt;&lt;br&gt;var img = new Image();&lt;br&gt;var start = new Date();&lt;br&gt;var t = 0;&lt;br&gt;img.onload = img.onerror = pingCheck;&lt;br&gt;function pingCheck() {&lt;br&gt;    t = new Date() - start;&lt;br&gt; }&lt;br&gt;img.src = url + “/?” + (+new Date());&lt;br&gt;&lt;/pre&gt;&lt;br&gt;以上代码只是简单实现了图片ping的核心，另外还要写函数用来判断哪个url的时间短，并进行location。  但是上线正式测试之后，发现这个真是一团糟，如果目标站服务器挂了，或者client的网速不好时，整个页面将无限循环，于是你的js越写越复杂，定时器越写越多，用来排除各种错误。&lt;/p&gt;
 &lt;p&gt;##探索&lt;br&gt;某天就在本屌正在怀疑人生的时候，突然发现有人提到&lt;font color=&quot;red&quot;&gt;如何防止网站被别人iframe调用&lt;/font&gt;，并提到在自己的网站加入以下js即可：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;if (self != top){
