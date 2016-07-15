@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>一江波,波又波</title>
-  <subtitle>jarbob&#39;s personl codesky</subtitle>
-  <link href="/atom.xml" rel="self"/>
-  
-  <link href="http://jarbob.com/"/>
-  <updated>2016-07-15T04:34:30.000Z</updated>
-  <id>http://jarbob.com/</id>
-  
-  <author>
-    <name>江波波</name>
+<?xml-stylesheet type="text/css" href="css/rss.css" ?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>一江波,波又波</title>
+    <link>http://jarbob.com/</link>
+    <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>PHP mysql PDO 和mysql类的封装</title>
-    <link href="http://jarbob.com/2016/07/15/PHP-mysql-PDO-%E5%92%8Cmysql%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/"/>
-    <id>http://jarbob.com/2016/07/15/PHP-mysql-PDO-和mysql类的封装/</id>
-    <published>2016-07-15T03:57:34.000Z</published>
-    <updated>2016-07-15T04:34:30.000Z</updated>
+    <description>发呆意淫，代码发烧，冥想笔记</description>
+    <pubDate>Fri, 15 Jul 2016 04:34:30 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
     
-    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;ul&gt;
+    <item>
+      <title>PHP mysql PDO 和mysql类的封装</title>
+      <link>http://jarbob.com/2016/07/15/PHP-mysql-PDO-%E5%92%8Cmysql%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/</link>
+      <guid>http://jarbob.com/2016/07/15/PHP-mysql-PDO-%E5%92%8Cmysql%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/</guid>
+      <pubDate>Fri, 15 Jul 2016 03:57:34 GMT</pubDate>
+      <description>
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;什么是pdo?&lt;br&gt;PDO一是PHP数据对象（PHP Data Object）的缩写,是PHP5以后的一种mysql数据驱动对
+      
+      </description>
+      
+      <content:encoded>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;什么是pdo?&lt;br&gt;PDO一是PHP数据对象（PHP Data Object）的缩写,是PHP5以后的一种mysql数据驱动对象。&lt;br&gt;现在大多数php框架都包含了对他的支持。&lt;/li&gt;
 &lt;li&gt;为什么要自己封装?&lt;br&gt;个人觉得只有自己写的东西,才是最清楚的。当然不否定使用现成的框架,或者再其基础上加以改造   &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;这篇博文主要展示在统一接口下轻松实现两种数据驱动类的切换。&lt;/p&gt;
@@ -357,32 +359,23 @@ class Model{
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当然,代码还可以用一个公共配置文件来指定数据对象的类型和配置数据。&lt;/p&gt;
 &lt;p&gt;好了,教程到此结束。如果您对此过程感到满意,你还可以继续看看我在&lt;a href=&quot;https://github.com/jarbob/MyPhpFramework/tree/JBPhpFramework&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gayhub&lt;/a&gt;开源的一个php框架,代码有详细的注释,并且入口文件没有做任何模块化配置文件,一边加深对php框架的学习印象。&lt;/p&gt;
-</content>
+</content:encoded>
+      
+      <comments>http://jarbob.com/2016/07/15/PHP-mysql-PDO-%E5%92%8Cmysql%E7%B1%BB%E7%9A%84%E5%B0%81%E8%A3%85/#disqus_thread</comments>
+    </item>
     
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;什么是pdo?&lt;br&gt;PDO一是PHP数据对象（PHP Data Object）的缩写,是PHP5以后的一种mysql数据驱动对
-    
-    </summary>
-    
-      <category term="php" scheme="http://jarbob.com/categories/php/"/>
-    
-    
-      <category term="mysql" scheme="http://jarbob.com/tags/mysql/"/>
-    
-      <category term="pdo" scheme="http://jarbob.com/tags/pdo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用js模拟ping实现智能选择线路跳转网站</title>
-    <link href="http://jarbob.com/2016/07/10/%E5%88%A9%E7%94%A8js%E6%A8%A1%E6%8B%9Fping%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E9%80%89%E6%8B%A9%E7%BA%BF%E8%B7%AF%E8%B7%B3%E8%BD%AC%E7%BD%91%E7%AB%99/"/>
-    <id>http://jarbob.com/2016/07/10/利用js模拟ping实现智能选择线路跳转网站/</id>
-    <published>2016-07-10T14:02:26.000Z</published>
-    <updated>2016-07-14T13:48:44.000Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax失效，另外还要考虑到兼容性，一些h5下的技术如websocket也没法使用。&lt;/p&gt;
+    <item>
+      <title>利用js模拟ping实现智能选择线路跳转网站</title>
+      <link>http://jarbob.com/2016/07/10/%E5%88%A9%E7%94%A8js%E6%A8%A1%E6%8B%9Fping%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E9%80%89%E6%8B%A9%E7%BA%BF%E8%B7%AF%E8%B7%B3%E8%BD%AC%E7%BD%91%E7%AB%99/</link>
+      <guid>http://jarbob.com/2016/07/10/%E5%88%A9%E7%94%A8js%E6%A8%A1%E6%8B%9Fping%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E9%80%89%E6%8B%A9%E7%BA%BF%E8%B7%AF%E8%B7%B3%E8%BD%AC%E7%BD%91%E7%AB%99/</guid>
+      <pubDate>Sun, 10 Jul 2016 14:02:26 GMT</pubDate>
+      <description>
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax
+      
+      </description>
+      
+      <content:encoded>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax失效，另外还要考虑到兼容性，一些h5下的技术如websocket也没法使用。&lt;/p&gt;
 &lt;h2 id=&quot;尝试&quot;&gt;&lt;a href=&quot;#尝试&quot; class=&quot;headerlink&quot; title=&quot;尝试&quot;&gt;&lt;/a&gt;尝试&lt;/h2&gt;&lt;p&gt;　　既然要解决跨域，那么首先考虑到的图片ping。代码大概如下：&lt;/p&gt;
 &lt;p&gt;&lt;pre&gt;&lt;br&gt;var img = new Image();&lt;br&gt;var start = new Date();&lt;br&gt;var t = 0;&lt;br&gt;img.onload = img.onerror = pingCheck;&lt;br&gt;function pingCheck() {&lt;br&gt;    t = new Date() - start;&lt;br&gt; }&lt;br&gt;img.src = url + “/?” + (+new Date());&lt;br&gt;&lt;/pre&gt;&lt;br&gt;以上代码只是简单实现了图片ping的核心，另外还要写函数用来判断哪个url的时间短，并进行location。  但是上线正式测试之后，发现这个真是一团糟，如果目标站服务器挂了，或者client的网速不好时，整个页面将无限循环，于是你的js越写越复杂，定时器越写越多，用来排除各种错误。&lt;/p&gt;
 &lt;p&gt;##探索&lt;br&gt;某天就在本屌正在怀疑人生的时候，突然发现有人提到&lt;font color=&quot;red&quot;&gt;如何防止网站被别人iframe调用&lt;/font&gt;，并提到在自己的网站加入以下js即可：&lt;/p&gt;
@@ -409,21 +402,10 @@ for(var i =0; i &amp;lt; arr.length; i++){
 }
 };
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;好吧，这样就简简单单的实现咯~~~&lt;br&gt;好吧，详情请看&lt;a href=&quot;https://github.com/jarbob/JqueryPing.iframe.js&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
-</content>
+</content:encoded>
+      
+      <comments>http://jarbob.com/2016/07/10/%E5%88%A9%E7%94%A8js%E6%A8%A1%E6%8B%9Fping%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E9%80%89%E6%8B%A9%E7%BA%BF%E8%B7%AF%E8%B7%B3%E8%BD%AC%E7%BD%91%E7%AB%99/#disqus_thread</comments>
+    </item>
     
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax
-    
-    </summary>
-    
-      <category term="web" scheme="http://jarbob.com/categories/web/"/>
-    
-    
-      <category term="js" scheme="http://jarbob.com/tags/js/"/>
-    
-      <category term="ping" scheme="http://jarbob.com/tags/ping/"/>
-    
-  </entry>
-  
-</feed>
+  </channel>
+</rss>
