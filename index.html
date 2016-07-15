@@ -259,6 +259,134 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/15/PHP-mysql-PDO-和mysql类的封装/" itemprop="url">
+                  PHP mysql PDO 和mysql类的封装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-15T11:57:34+08:00" content="2016-07-15">
+              2016-07-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/15/PHP-mysql-PDO-和mysql类的封装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/15/PHP-mysql-PDO-和mysql类的封装/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          前言
+什么是pdo?PDO一是PHP数据对象（PHP Data Object）的缩写,是PHP5以后的一种mysql数据驱动对象。现在大多数php框架都包含了对他的支持。
+为什么要自己封装?个人觉得只有自己写的东西,才是最清楚的。当然不否定使用现成的框架,或者再其基础上加以改造   
+这篇博文主要展
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/15/PHP-mysql-PDO-和mysql类的封装/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/10/利用js模拟ping实现智能选择线路跳转网站/" itemprop="url">
                   利用js模拟ping实现智能选择线路跳转网站
                 </a>
@@ -329,35 +457,16 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax失效，另外还要考虑到兼容性，一些h5下的技术如websocket也没法使用。</p>
-<h2 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h2><p>　　既然要解决跨域，那么首先考虑到的图片ping。代码大概如下：</p>
-<p><pre><br>var img = new Image();<br>var start = new Date();<br>var t = 0;<br>img.onload = img.onerror = pingCheck;<br>function pingCheck() {<br>    t = new Date() - start;<br> }<br>img.src = url + “/?” + (+new Date());<br></pre><br>以上代码只是简单实现了图片ping的核心，另外还要写函数用来判断哪个url的时间短，并进行location。  但是上线正式测试之后，发现这个真是一团糟，如果目标站服务器挂了，或者client的网速不好时，整个页面将无限循环，于是你的js越写越复杂，定时器越写越多，用来排除各种错误。</p>
-<p>##探索<br>某天就在本屌正在怀疑人生的时候，突然发现有人提到<font color="red">如何防止网站被别人iframe调用</font>，并提到在自己的网站加入以下js即可：</p>
-<pre><code>if (self != top){
-    top.location.href = self.location.href;
-}
-</code></pre><p>本屌顿时有点想法，因为目标站正好加了这个代码。  于是乎本人的新版iframe版代码就这样出现了：</p>
-<pre><code>var Ping = function () {
- };
+          前言　　由于项目中用到js类似shell下的ping，而且前提是目标站服务器没有权限，我们不能配置其服务器允许跨域，所以这使得不能跨域的ajax失效，另外还要考虑到兼容性，一些h5下的技术如websocket也没法使用。
+尝试　　既然要解决跨域，那么首先考虑到的图片ping。代码大概如下：
+var 
+          ...
 
-Ping.prototype.urlArr = new Array();
-Ping.prototype.check = function (u) {
-
-$(&quot;&lt;iframe style=&apos;display: none&apos; width=&apos;1&apos; height=&apos;1&apos; id=&apos;PingFrame&apos;&gt;&lt;/iframe&gt;&quot;).appendTo(&apos;body&apos;);
-$(&quot;#PingFrame&quot;).attr(&quot;src&quot;, u);
-
-};
-
-Ping.prototype.ping = function () {
-var arr = this.urlArr;
-for(var i =0; i &lt; arr.length; i++){
-    //console.log(arr[i]);
-    this.check(&quot;http://&quot; + arr[i]);
-}
-};
-</code></pre><p>好吧，这样就简简单单的实现咯~~~<br>好吧，详情请看<a href="https://github.com/jarbob/JqueryPing.iframe.js" target="_blank" rel="external">github</a></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/10/利用js模拟ping实现智能选择线路跳转网站/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -428,7 +537,7 @@ for(var i =0; i &lt; arr.length; i++){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -436,7 +545,7 @@ for(var i =0; i &lt; arr.length; i++){
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -445,7 +554,7 @@ for(var i =0; i &lt; arr.length; i++){
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
