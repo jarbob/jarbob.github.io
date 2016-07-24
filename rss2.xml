@@ -9,11 +9,44 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>发呆意淫，代码发烧，冥想笔记</description>
-    <pubDate>Fri, 15 Jul 2016 12:12:12 GMT</pubDate>
+    <pubDate>Sun, 24 Jul 2016 10:58:53 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>给hexo博客下用hexo-generator-feed配置的的rss穿上外衣</title>
+      <title>Macbook外置SSD安装linux+win10双系统</title>
+      <link>http://jarbob.com/2016/07/24/Macbook%E5%A4%96%E7%BD%AESSD%E5%AE%89%E8%A3%85linux-win10%E5%8F%8C%E7%B3%BB%E7%BB%9F/</link>
+      <guid>http://jarbob.com/2016/07/24/Macbook%E5%A4%96%E7%BD%AESSD%E5%AE%89%E8%A3%85linux-win10%E5%8F%8C%E7%B3%BB%E7%BB%9F/</guid>
+      <pubDate>Sun, 24 Jul 2016 08:24:34 GMT</pubDate>
+      <description>
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;作为Mac OS的重度使用者,本不想教大家装外置双系统,可是呢,本人天生爱折腾,于是新买的macbook便很快成了小白鼠。当然,说到这个本人的方法不一定是最理想的,这里大家可以作为参考。&lt;br&gt;  不多说了,先来看看效果:&lt;br&gt;  &lt;img src=&quot;/images/IMG_0908.JPG&quot; alt=&quot;img&quot;&gt;&lt;br&gt;
+      
+      </description>
+      
+      <content:encoded>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;作为Mac OS的重度使用者,本不想教大家装外置双系统,可是呢,本人天生爱折腾,于是新买的macbook便很快成了小白鼠。当然,说到这个本人的方法不一定是最理想的,这里大家可以作为参考。&lt;br&gt;  不多说了,先来看看效果:&lt;br&gt;  &lt;img src=&quot;/images/IMG_0908.JPG&quot; alt=&quot;img&quot;&gt;&lt;br&gt;  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;  &lt;img src=&quot;/images/IMG_0909.JPG&quot; alt=&quot;img&quot;&gt;&lt;br&gt;  &lt;img src=&quot;/images/IMG_0910.JPG&quot; alt=&quot;img&quot;&gt;&lt;br&gt;  &lt;img src=&quot;/images/IMG_0911.JPG&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
+&lt;p&gt;好吧接下来,适合人群:  &lt;/p&gt;
+&lt;h2 id=&quot;适合人群&quot;&gt;&lt;a href=&quot;#适合人群&quot; class=&quot;headerlink&quot; title=&quot;适合人群&quot;&gt;&lt;/a&gt;适合人群&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;有闲置的硬盘,并且像我一样喜欢折腾  &lt;/li&gt;
+&lt;li&gt;工作中用到其他系统, 但手里抱的mac  &lt;/li&gt;
+&lt;li&gt;自身mac的硬盘不够大,想通过外置硬盘的方法安装其他系统  &lt;/li&gt;
+&lt;li&gt;本教程适合有一定系统安装经验的用户,一些网上有的方法,这里不做详说  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;有好使的PE系统优盘,最起码也得支持UEFI吧  &lt;/li&gt;
+&lt;li&gt;各种系统的镜像文件  &lt;/li&gt;
+&lt;li&gt;一块移动硬盘或者固态硬盘(本人使用的是三星850+硬盘外壳)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;移动硬盘分区以及windows的安装&quot;&gt;&lt;a href=&quot;#移动硬盘分区以及windows的安装&quot; class=&quot;headerlink&quot; title=&quot;移动硬盘分区以及windows的安装&quot;&gt;&lt;/a&gt;移动硬盘分区以及windows的安装&lt;/h2&gt;&lt;p&gt;这个工作本人是在pe系统底下完成的&lt;br&gt;首先用diskgenius或者类似软件软件将硬盘分区表转换成GUID模式,然后将硬盘分出大约100MB空间的ESP分区。&lt;br&gt;以上工作完成之后,接下来分配windows的分区大小,本人分出的大小是50GB,大家可以根据自己的情况来分。&lt;br&gt;然后在分出的分区中还原windows镜像,完成之后手动添加引导。这里我使用的是比较傻瓜的软件,当然也可以使用命令行。&lt;br&gt;在添加引导之后,你就可以看到在刚才分出的ESP分区中,多出了一个EFI文件夹,打开之后是boot和Microsoft文件夹。到此windows轻松安装成功&lt;/p&gt;
+&lt;h2 id=&quot;Linux系统的安装&quot;&gt;&lt;a href=&quot;#Linux系统的安装&quot; class=&quot;headerlink&quot; title=&quot;Linux系统的安装&quot;&gt;&lt;/a&gt;Linux系统的安装&lt;/h2&gt;&lt;p&gt;Linux的安装类似于以上win的安装,大致过程是:划分合适大小的分区,制作linux镜像U盘,安装镜像到分区。&lt;br&gt;不过,安装Linux 记得在选安装启动设备的位置时,选择/dev/sda1(这个1别漏了),这样ubuntu在安装完成之后会自动在ESP分区追加自己的引导。&lt;br&gt;当linux安装完成后,ESP分区中将会多出一个ubuntu文件夹,如果没有,那说明是不对的。&lt;/p&gt;
+&lt;h2 id=&quot;利用reFind优雅的展示系统选择&quot;&gt;&lt;a href=&quot;#利用reFind优雅的展示系统选择&quot; class=&quot;headerlink&quot; title=&quot;利用reFind优雅的展示系统选择&quot;&gt;&lt;/a&gt;利用reFind优雅的展示系统选择&lt;/h2&gt;&lt;p&gt;先贴&lt;a href=&quot;http://www.rodsbooks.com/refind/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方链接&lt;/a&gt;出来吧,然后你就可以愉快地下载了,下载完成,将refind文件夹复制到你的ESP分区的EFI文件夹。&lt;br&gt;所以复制之后,你的ESP分区将存在4个文件夹-boot,Microsoft,ubuntu,refind.&lt;br&gt;这里我用的比较偷懒的方法,就是将Microsoft文件夹改成win10,然一个后新建Microsoft文件夹,进入该文件夹新建Boot文件夹,然后将refind文件夹中的文件全部拷贝进去,然后将refind_x64.efi改成bootmgfw.efi。看懂了吧,就是狸猫换太子。&lt;br&gt;到此,已经快成功了。将Microsoft文件夹下的boot文件夹中的refind.conf-sample改成refind.conf。并用编辑器打开(本人使用的notepad++),进行配置。好吧,我又开始偷懒了,配置文件放&lt;a href=&quot;https://github.com/jarbob/reFind.conf-jarbob.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gayhub&lt;/a&gt;吧,大家可以参考一下,不想研究就直接用好了。&lt;/p&gt;
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;经过以上的简单操作,外置硬盘多系统的安装就完成了。将硬盘插入mac,重启,注意不用按着option键,就可以看到多个系统的选择界面了。本人亲测有效,时间有限,文章比较粗糙,有什么问题欢迎留言交流。&lt;/p&gt;
+</content:encoded>
+      
+      <comments>http://jarbob.com/2016/07/24/Macbook%E5%A4%96%E7%BD%AESSD%E5%AE%89%E8%A3%85linux-win10%E5%8F%8C%E7%B3%BB%E7%BB%9F/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>给hexo博客下用hexo-generator-feed配置的rss添加样式</title>
       <link>http://jarbob.com/2016/07/15/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E4%B8%8B%E7%94%A8hexo-generator-feed%E9%85%8D%E7%BD%AE%E7%9A%84%E7%9A%84rss%E7%A9%BF%E4%B8%8A%E5%A4%96%E8%A1%A3/</link>
       <guid>http://jarbob.com/2016/07/15/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E4%B8%8B%E7%94%A8hexo-generator-feed%E9%85%8D%E7%BD%AE%E7%9A%84%E7%9A%84rss%E7%A9%BF%E4%B8%8A%E5%A4%96%E8%A1%A3/</guid>
       <pubDate>Fri, 15 Jul 2016 11:49:24 GMT</pubDate>
