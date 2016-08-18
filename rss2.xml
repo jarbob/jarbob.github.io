@@ -9,8 +9,120 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>发呆意淫，代码发烧，冥想笔记</description>
-    <pubDate>Sun, 24 Jul 2016 10:58:53 GMT</pubDate>
+    <pubDate>Thu, 18 Aug 2016 06:22:43 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>利用python爬取CNZZ域名来源数据</title>
+      <link>http://jarbob.com/2016/08/18/%E5%88%A9%E7%94%A8python%E7%88%AC%E5%8F%96CNZZ%E5%9F%9F%E5%90%8D%E6%9D%A5%E6%BA%90%E6%95%B0%E6%8D%AE/</link>
+      <guid>http://jarbob.com/2016/08/18/%E5%88%A9%E7%94%A8python%E7%88%AC%E5%8F%96CNZZ%E5%9F%9F%E5%90%8D%E6%9D%A5%E6%BA%90%E6%95%B0%E6%8D%AE/</guid>
+      <pubDate>Thu, 18 Aug 2016 05:56:59 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;很早就想玩玩python,没想到真正玩py是现在,不过编程这东西,语法是最基础的,最重要的是要有思想。&lt;br&gt;说到蜘蛛,本人以前只是用c#等语言玩玩,现在尝试用py实现,发现比以前简单了不知道多少,尤其是cookie的处理,简直简单到爆。当然,主要的原因还是许多大牛开发各种棒棒的库。 &lt;/p&gt;
+&lt;h2 id=&quot;代码测试效果&quot;&gt;&lt;a href=&quot;#代码测试效果&quot; class=&quot;headerlink&quot; title=&quot;代码测试效果&quot;&gt;&lt;/a&gt;代码测试效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/cnzz_catch.png&quot; alt=&quot;img&quot;&gt;&lt;br&gt;好了不扯了,代码开始。利用了cnzz的快捷查询页面,这样登录也是最简单的。贴代码:  &lt;/p&gt;
+      
+      </description>
+      
+      <content:encoded>&lt;p&gt;很早就想玩玩python,没想到真正玩py是现在,不过编程这东西,语法是最基础的,最重要的是要有思想。&lt;br&gt;说到蜘蛛,本人以前只是用c#等语言玩玩,现在尝试用py实现,发现比以前简单了不知道多少,尤其是cookie的处理,简直简单到爆。当然,主要的原因还是许多大牛开发各种棒棒的库。 &lt;/p&gt;
+&lt;h2 id=&quot;代码测试效果&quot;&gt;&lt;a href=&quot;#代码测试效果&quot; class=&quot;headerlink&quot; title=&quot;代码测试效果&quot;&gt;&lt;/a&gt;代码测试效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/cnzz_catch.png&quot; alt=&quot;img&quot;&gt;&lt;br&gt;好了不扯了,代码开始。利用了cnzz的快捷查询页面,这样登录也是最简单的。贴代码:  &lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;pre&gt;&lt;code&gt;# -*- coding: UTF-8 -*-
+
+&amp;quot;&amp;quot;&amp;quot;
+# get json done
+# may be the important js
+# https://web.umeng.com/static/js/traf/referrals.js?t=201603181110
+&amp;quot;&amp;quot;&amp;quot;
+import urllib
+import urllib2
+import cookielib
+import time
+
+
+# import pprint
+
+# 登录的主页面
+
+class CnzzCatch:
+    is_login = False
+
+    def __set_cookie(self):
+        &amp;quot;&amp;quot;&amp;quot;add cookie listener&amp;quot;&amp;quot;&amp;quot;
+        cj = cookielib.LWPCookieJar()
+        cookie_support = urllib2.HTTPCookieProcessor(cj)
+        opener = urllib2.build_opener(cookie_support, urllib2.HTTPHandler)
+        urllib2.install_opener(opener)
+
+    def __init__(self, site_id):
+        &amp;quot;&amp;quot;&amp;quot;construct of logining to cnzz&amp;quot;&amp;quot;&amp;quot;
+        self.site_id = site_id
+        self.__host_url = &amp;apos;http://new.cnzz.com/v1/login.php?siteid=&amp;apos; + self.site_id
+        self.__post_url = &amp;apos;http://new.cnzz.com/v1/login.php?t=login&amp;amp;siteid=&amp;apos; + self.site_id
+        self.password = &amp;apos;***&amp;apos; #your password here
+        self.__set_cookie()
+        self.__login()
+
+    def __login(self):
+        &amp;quot;&amp;quot;&amp;quot;login &amp;amp; catch&amp;quot;&amp;quot;&amp;quot;
+        if urllib2.urlopen(self.__host_url):
+            print &amp;apos;Open host success!&amp;apos;
+        # headers
+        headers = {&amp;apos;User-Agent&amp;apos;: &amp;apos;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1&amp;apos;,
+                   &amp;apos;Referer&amp;apos;: &amp;apos;http://new.cnzz.com/v1/login.php?siteid=&amp;apos; + self.site_id,
+                   &amp;apos;Accept&amp;apos;: &amp;apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&amp;apos;,
+                   &amp;apos;Accept-Language&amp;apos;: &amp;apos;en-US,en;q=0.7,zh;q=0.3&amp;apos;,
+                   &amp;apos;Accept-Encoding&amp;apos;: &amp;apos;zip, deflate&amp;apos;,
+                   &amp;apos;Connection&amp;apos;: &amp;apos;keep-alive&amp;apos;,
+                   &amp;apos;Content-Type&amp;apos;: &amp;apos;application/x-www-form-urlencoded&amp;apos;,
+                   &amp;apos;Content-Length&amp;apos;: &amp;apos;15&amp;apos;
+                   }
+        # 构造Post数据。
+        post_data = {&amp;apos;password&amp;apos;: self.password}
+
+        # 需要给Post数据编码
+        post_data = urllib.urlencode(post_data)
+
+        # 通过urllib2提供的request方法来向指定Url发送我们构造的数据，并完成登录过程
+        request = urllib2.Request(self.__post_url, post_data, headers)
+        response = None
+        try:
+            response = urllib2.urlopen(request)
+        except urllib2.URLError as e:
+            if hasattr(e, &amp;apos;code&amp;apos;):
+                return &amp;apos;LOGIN ERROR CODE&amp;apos;, e.code
+            elif hasattr(e, &amp;apos;reason&amp;apos;):
+                return &amp;apos;LOGIN ERROR REASON&amp;apos;, e.reason
+        finally:
+            if response:
+                print &amp;apos;Login finish!&amp;apos;
+                self.is_login = True
+
+    def get_data(self, current_page, page_num, start_date, end_date=time.strftime(&amp;quot;%Y-%m-%d&amp;quot;, time.localtime())):
+        &amp;quot;&amp;quot;&amp;quot;get summary json data&amp;quot;&amp;quot;&amp;quot;
+        print &amp;apos;Getting data...&amp;apos;
+        if self.is_login:
+            data_url = &amp;apos;https://web.umeng.com/main.php?c=traf&amp;amp;a=domain&amp;amp;ajax=module=summary|module=inputList|module=innerList|module=refererDomainList_orderBy=pv_orderType=-1_currentPage=%d_pageType=%d&amp;amp;siteid=%s&amp;amp;st=%s&amp;amp;et=%s&amp;amp;domainCondType=&amp;amp;itemName=&amp;amp;itemNameType=&amp;amp;itemVal=&amp;amp;siteType=&amp;apos; % (current_page, page_num, self.site_id, start_date, end_date)
+            response = None
+            try:
+                response = urllib2.urlopen(data_url)
+            except urllib2.URLError as e:
+                if hasattr(e, &amp;apos;code&amp;apos;):
+                    return &amp;apos;GETDATA ERROR CODE&amp;apos;, e.code
+                elif hasattr(e, &amp;apos;reason&amp;apos;):
+                    return &amp;apos;GETDATA ERROR REASON&amp;apos;, e.reason
+            finally:
+                if response:
+                    return response.read()
+
+# 实例化测试
+x = CnzzCatch(&amp;apos;6666666666&amp;apos;)  #your website_id  here
+s = x.get_data(1, 30, &amp;apos;2016-07-19&amp;apos;)
+print s
+&lt;/code&gt;&lt;/pre&gt;</content:encoded>
+      
+      <comments>http://jarbob.com/2016/08/18/%E5%88%A9%E7%94%A8python%E7%88%AC%E5%8F%96CNZZ%E5%9F%9F%E5%90%8D%E6%9D%A5%E6%BA%90%E6%95%B0%E6%8D%AE/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>Macbook外置SSD安装linux+win10双系统</title>
