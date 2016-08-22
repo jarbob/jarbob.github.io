@@ -7,6 +7,7 @@
     <title>一江波,波又波</title>
     <link>http://jarbob.com/</link>
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
+    <script xmlns="http://www.w3.org/1999/xhtml" src="./js/rss.js"></script>
     
     <description>发呆意淫，代码发烧，冥想笔记</description>
     <pubDate>Thu, 18 Aug 2016 06:22:43 GMT</pubDate>
