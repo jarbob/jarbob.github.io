@@ -165,31 +165,26 @@ print s
       <pubDate>Fri, 15 Jul 2016 11:49:24 GMT</pubDate>
       <description>
       
-        &lt;h2 id=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;a href=&quot;#添加hexo-generator-feed插件&quot; class=&quot;headerlink&quot; title=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;/a&gt;添加hexo-generator-feed插件&lt;/h2&gt;&lt;p&gt;这里不详细说了,提一下注意事项:  &lt;/p&gt;
+        &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;chrome访问rss,会提醒:  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;This XML file does not appear to have any style information associated with it. The document tree is shown below.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;本文主要解决rss没有样式的问题。&lt;/p&gt;
+&lt;h2 id=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;a href=&quot;#添加hexo-generator-feed插件&quot; class=&quot;headerlink&quot; title=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;/a&gt;添加hexo-generator-feed插件&lt;/h2&gt;&lt;p&gt;这里不详细说了,提一下注意事项:  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;npm feed插件的时候记得加上 –save&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;根目录下的配置文件长这样:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;plugin:
-- hexo-generator-feed
-
-#Feed Atom
-feed:
-    type: rss2  #或者atom
-    path: rss2.xml #跟上面一致atom.xml
-    limit: 20    #rss条目数最大值
-    hub:   #这个可以不填
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;配置完成,直接&lt;code&gt;hexo g&lt;/code&gt;,会在public文件夹下生成xml文件  &lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;根目录下的配置文件长这样:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;问题来了&quot;&gt;&lt;a href=&quot;#问题来了&quot; class=&quot;headerlink&quot; title=&quot;问题来了&quot;&gt;&lt;/a&gt;问题来了&lt;/h2&gt;&lt;p&gt;当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree&lt;br&gt;所以重点了,本文叫你怎么添加样式文件,甚至在&lt;code&gt;deploy -g&lt;/code&gt;的时候也是全自动生成的&lt;br&gt;
       
       </description>
       
-      <content:encoded>&lt;h2 id=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;a href=&quot;#添加hexo-generator-feed插件&quot; class=&quot;headerlink&quot; title=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;/a&gt;添加hexo-generator-feed插件&lt;/h2&gt;&lt;p&gt;这里不详细说了,提一下注意事项:  &lt;/p&gt;
+      <content:encoded>&lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;chrome访问rss,会提醒:  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;This XML file does not appear to have any style information associated with it. The document tree is shown below.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;本文主要解决rss没有样式的问题。&lt;/p&gt;
+&lt;h2 id=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;a href=&quot;#添加hexo-generator-feed插件&quot; class=&quot;headerlink&quot; title=&quot;添加hexo-generator-feed插件&quot;&gt;&lt;/a&gt;添加hexo-generator-feed插件&lt;/h2&gt;&lt;p&gt;这里不详细说了,提一下注意事项:  &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;npm feed插件的时候记得加上 –save&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;根目录下的配置文件长这样:&lt;/p&gt;
+&lt;li&gt;根目录下的配置文件长这样:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;pre&gt;&lt;code&gt;plugin:
 - hexo-generator-feed
 
@@ -199,11 +194,10 @@ feed:
     path: rss2.xml #跟上面一致atom.xml
     limit: 20    #rss条目数最大值
     hub:   #这个可以不填
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;配置完成,直接&lt;code&gt;hexo g&lt;/code&gt;,会在public文件夹下生成xml文件  &lt;/p&gt;
-&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;配置完成,直接&lt;code&gt;hexo g&lt;/code&gt;,会在public文件夹下生成xml文件  &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;问题来了&quot;&gt;&lt;a href=&quot;#问题来了&quot; class=&quot;headerlink&quot; title=&quot;问题来了&quot;&gt;&lt;/a&gt;问题来了&lt;/h2&gt;&lt;p&gt;当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree&lt;br&gt;所以重点了,本文叫你怎么添加样式文件,甚至在&lt;code&gt;deploy -g&lt;/code&gt;的时候也是全自动生成的&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;问题来了&quot;&gt;&lt;a href=&quot;#问题来了&quot; class=&quot;headerlink&quot; title=&quot;问题来了&quot;&gt;&lt;/a&gt;问题来了&lt;/h2&gt;&lt;p&gt;当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree&lt;br&gt;所以重点了,本文叫你怎么添加样式文件,甚至在&lt;code&gt;deploy -g&lt;/code&gt;的时候也是全自动生成的  &lt;/p&gt;
 &lt;h2 id=&quot;解决问题&quot;&gt;&lt;a href=&quot;#解决问题&quot; class=&quot;headerlink&quot; title=&quot;解决问题&quot;&gt;&lt;/a&gt;解决问题&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;在&lt;code&gt;博客根目录/node_modules/hexo-generator-feed/&lt;/code&gt; 文件夹下添加css/rss.css  &lt;/li&gt;
 &lt;li&gt;修改&lt;code&gt;博客根目录/node_modules/hexo-generator-feed/lib/generator.js&lt;/code&gt;的代码  &lt;/li&gt;

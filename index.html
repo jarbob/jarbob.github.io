@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="发呆意淫，代码发烧，冥想笔记，脑洞大开 and so on..." />
+  <meta name="keywords" content="jarbob | 江波波 | 个人网站 | 博客" />
 
 
 
@@ -578,24 +578,14 @@
 
       
         
-          <h2 id="添加hexo-generator-feed插件"><a href="#添加hexo-generator-feed插件" class="headerlink" title="添加hexo-generator-feed插件"></a>添加hexo-generator-feed插件</h2><p>这里不详细说了,提一下注意事项:  </p>
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>chrome访问rss,会提醒:  </p>
+<pre><code>This XML file does not appear to have any style information associated with it. The document tree is shown below.
+</code></pre><p>本文主要解决rss没有样式的问题。</p>
+<h2 id="添加hexo-generator-feed插件"><a href="#添加hexo-generator-feed插件" class="headerlink" title="添加hexo-generator-feed插件"></a>添加hexo-generator-feed插件</h2><p>这里不详细说了,提一下注意事项:  </p>
 <ul>
 <li>npm feed插件的时候记得加上 –save</li>
-<li><p>根目录下的配置文件长这样:</p>
-<pre><code>plugin:
-- hexo-generator-feed
-
-#Feed Atom
-feed:
-    type: rss2  #或者atom
-    path: rss2.xml #跟上面一致atom.xml
-    limit: 20    #rss条目数最大值
-    hub:   #这个可以不填
-</code></pre></li>
-<li><p>配置完成,直接<code>hexo g</code>,会在public文件夹下生成xml文件  </p>
-</li>
+<li>根目录下的配置文件长这样:</li>
 </ul>
-<h2 id="问题来了"><a href="#问题来了" class="headerlink" title="问题来了"></a>问题来了</h2><p>当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree<br>所以重点了,本文叫你怎么添加样式文件,甚至在<code>deploy -g</code>的时候也是全自动生成的<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/15/给hexo博客下用hexo-generator-feed配置的的rss穿上外衣/#more" rel="contents">
               阅读全文 &raquo;

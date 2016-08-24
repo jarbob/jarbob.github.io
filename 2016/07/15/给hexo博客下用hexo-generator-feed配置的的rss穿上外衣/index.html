@@ -88,49 +88,31 @@
 
 
 
-<meta name="description" content="添加hexo-generator-feed插件这里不详细说了,提一下注意事项:  
+<meta name="description" content="问题chrome访问rss,会提醒:  
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+本文主要解决rss没有样式的问题。
+添加hexo-generator-feed插件这里不详细说了,提一下注意事项:  
 
-npm feed插件的时候记得加上 –save
-根目录下的配置文件长这样:
-plugin:
-- hexo-generator-feed
-
-#Feed Atom
-feed:
-    type: rss2  #或者atom
-    path: rss2.xml #跟上面一致atom.xml
-    limit: 20">
+npm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="给hexo博客下用hexo-generator-feed配置的rss添加样式">
 <meta property="og:url" content="http://jarbob.com/2016/07/15/给hexo博客下用hexo-generator-feed配置的的rss穿上外衣/index.html">
 <meta property="og:site_name" content="一江波,波又波">
-<meta property="og:description" content="添加hexo-generator-feed插件这里不详细说了,提一下注意事项:  
+<meta property="og:description" content="问题chrome访问rss,会提醒:  
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+本文主要解决rss没有样式的问题。
+添加hexo-generator-feed插件这里不详细说了,提一下注意事项:  
 
-npm feed插件的时候记得加上 –save
-根目录下的配置文件长这样:
-plugin:
-- hexo-generator-feed
-
-#Feed Atom
-feed:
-    type: rss2  #或者atom
-    path: rss2.xml #跟上面一致atom.xml
-    limit: 20">
-<meta property="og:updated_time" content="2016-07-24T08:26:22.000Z">
+npm">
+<meta property="og:updated_time" content="2016-08-24T07:47:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给hexo博客下用hexo-generator-feed配置的rss添加样式">
-<meta name="twitter:description" content="添加hexo-generator-feed插件这里不详细说了,提一下注意事项:  
+<meta name="twitter:description" content="问题chrome访问rss,会提醒:  
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+本文主要解决rss没有样式的问题。
+添加hexo-generator-feed插件这里不详细说了,提一下注意事项:  
 
-npm feed插件的时候记得加上 –save
-根目录下的配置文件长这样:
-plugin:
-- hexo-generator-feed
-
-#Feed Atom
-feed:
-    type: rss2  #或者atom
-    path: rss2.xml #跟上面一致atom.xml
-    limit: 20">
+npm">
 
 
 
@@ -361,10 +343,15 @@ feed:
       
 
       
-        <h2 id="添加hexo-generator-feed插件"><a href="#添加hexo-generator-feed插件" class="headerlink" title="添加hexo-generator-feed插件"></a>添加hexo-generator-feed插件</h2><p>这里不详细说了,提一下注意事项:  </p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>chrome访问rss,会提醒:  </p>
+<pre><code>This XML file does not appear to have any style information associated with it. The document tree is shown below.
+</code></pre><p>本文主要解决rss没有样式的问题。</p>
+<h2 id="添加hexo-generator-feed插件"><a href="#添加hexo-generator-feed插件" class="headerlink" title="添加hexo-generator-feed插件"></a>添加hexo-generator-feed插件</h2><p>这里不详细说了,提一下注意事项:  </p>
 <ul>
 <li>npm feed插件的时候记得加上 –save</li>
-<li><p>根目录下的配置文件长这样:</p>
+<li>根目录下的配置文件长这样:</li>
+</ul>
+<a id="more"></a>
 <pre><code>plugin:
 - hexo-generator-feed
 
@@ -374,11 +361,10 @@ feed:
     path: rss2.xml #跟上面一致atom.xml
     limit: 20    #rss条目数最大值
     hub:   #这个可以不填
-</code></pre></li>
-<li><p>配置完成,直接<code>hexo g</code>,会在public文件夹下生成xml文件  </p>
-</li>
+</code></pre><ul>
+<li>配置完成,直接<code>hexo g</code>,会在public文件夹下生成xml文件  </li>
 </ul>
-<h2 id="问题来了"><a href="#问题来了" class="headerlink" title="问题来了"></a>问题来了</h2><p>当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree<br>所以重点了,本文叫你怎么添加样式文件,甚至在<code>deploy -g</code>的时候也是全自动生成的<br><a id="more"></a></p>
+<h2 id="问题来了"><a href="#问题来了" class="headerlink" title="问题来了"></a>问题来了</h2><p>当你打开自己网站,点击rss订阅有木有发现,会提示没有样式文件,然后列出了tree<br>所以重点了,本文叫你怎么添加样式文件,甚至在<code>deploy -g</code>的时候也是全自动生成的  </p>
 <h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
 <li>在<code>博客根目录/node_modules/hexo-generator-feed/</code> 文件夹下添加css/rss.css  </li>
 <li>修改<code>博客根目录/node_modules/hexo-generator-feed/lib/generator.js</code>的代码  </li>
@@ -590,7 +576,7 @@ feed:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加hexo-generator-feed插件"><span class="nav-number">1.</span> <span class="nav-text">添加hexo-generator-feed插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题来了"><span class="nav-number">2.</span> <span class="nav-text">问题来了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决问题"><span class="nav-number">3.</span> <span class="nav-text">解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源链接"><span class="nav-number">4.</span> <span class="nav-text">资源链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加hexo-generator-feed插件"><span class="nav-number">2.</span> <span class="nav-text">添加hexo-generator-feed插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题来了"><span class="nav-number">3.</span> <span class="nav-text">问题来了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决问题"><span class="nav-number">4.</span> <span class="nav-text">解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源链接"><span class="nav-number">5.</span> <span class="nav-text">资源链接</span></a></li></ol></div>
             
           </div>
         </section>
