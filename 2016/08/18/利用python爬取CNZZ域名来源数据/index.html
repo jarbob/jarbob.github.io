@@ -97,7 +97,7 @@
 <meta property="og:description" content="很早就想玩玩python,没想到真正玩py是现在,不过编程这东西,语法是最基础的,最重要的是要有思想。说到蜘蛛,本人以前只是用c#等语言玩玩,现在尝试用py实现,发现比以前简单了不知道多少,尤其是cookie的处理,简直简单到爆。当然,主要的原因还是许多大牛开发各种棒棒的库。 
 代码测试效果好了不扯了,代码开始。利用了cnzz的快捷查询页面,这样登录也是最简单的。贴代码:">
 <meta property="og:image" content="http://jarbob.com/images/cnzz_catch.png">
-<meta property="og:updated_time" content="2016-08-18T06:22:43.000Z">
+<meta property="og:updated_time" content="2016-08-24T08:04:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用python爬取CNZZ域名来源数据">
 <meta name="twitter:description" content="很早就想玩玩python,没想到真正玩py是现在,不过编程这东西,语法是最基础的,最重要的是要有思想。说到蜘蛛,本人以前只是用c#等语言玩玩,现在尝试用py实现,发现比以前简单了不知道多少,尤其是cookie的处理,简直简单到爆。当然,主要的原因还是许多大牛开发各种棒棒的库。 
@@ -336,99 +336,8 @@
         <p>很早就想玩玩python,没想到真正玩py是现在,不过编程这东西,语法是最基础的,最重要的是要有思想。<br>说到蜘蛛,本人以前只是用c#等语言玩玩,现在尝试用py实现,发现比以前简单了不知道多少,尤其是cookie的处理,简直简单到爆。当然,主要的原因还是许多大牛开发各种棒棒的库。 </p>
 <h2 id="代码测试效果"><a href="#代码测试效果" class="headerlink" title="代码测试效果"></a>代码测试效果</h2><p><img src="/images/cnzz_catch.png" alt="img"><br>好了不扯了,代码开始。利用了cnzz的快捷查询页面,这样登录也是最简单的。贴代码:  </p>
 <a id="more"></a>
-<pre><code># -*- coding: UTF-8 -*-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">"""</span></div><div class="line"># get json done</div><div class="line"># may be the important js</div><div class="line"># https://web.umeng.com/static/js/traf/referrals.js?t=201603181110</div><div class="line">"""</div><div class="line"><span class="keyword">import</span> urllib</div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> cookielib</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># import pprint</span></div><div class="line"></div><div class="line"><span class="comment"># 登录的主页面</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CnzzCatch</span>:</span></div><div class="line">    is_login = <span class="keyword">False</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__set_cookie</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""add cookie listener"""</span></div><div class="line">        cj = cookielib.LWPCookieJar()</div><div class="line">        cookie_support = urllib2.HTTPCookieProcessor(cj)</div><div class="line">        opener = urllib2.build_opener(cookie_support, urllib2.HTTPHandler)</div><div class="line">        urllib2.install_opener(opener)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, site_id)</span>:</span></div><div class="line">        <span class="string">"""construct of logining to cnzz"""</span></div><div class="line">        self.site_id = site_id</div><div class="line">        self.__host_url = <span class="string">'http://new.cnzz.com/v1/login.php?siteid='</span> + self.site_id</div><div class="line">        self.__post_url = <span class="string">'http://new.cnzz.com/v1/login.php?t=login&amp;siteid='</span> + self.site_id</div><div class="line">        self.password = <span class="string">'***'</span> <span class="comment">#your password here</span></div><div class="line">        self.__set_cookie()</div><div class="line">        self.__login()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__login</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""login &amp; catch"""</span></div><div class="line">        <span class="keyword">if</span> urllib2.urlopen(self.__host_url):</div><div class="line">            <span class="keyword">print</span> <span class="string">'Open host success!'</span></div><div class="line">        <span class="comment"># headers</span></div><div class="line">        headers = &#123;<span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1'</span>,</div><div class="line">                   <span class="string">'Referer'</span>: <span class="string">'http://new.cnzz.com/v1/login.php?siteid='</span> + self.site_id,</div><div class="line">                   <span class="string">'Accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,</div><div class="line">                   <span class="string">'Accept-Language'</span>: <span class="string">'en-US,en;q=0.7,zh;q=0.3'</span>,</div><div class="line">                   <span class="string">'Accept-Encoding'</span>: <span class="string">'zip, deflate'</span>,</div><div class="line">                   <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</div><div class="line">                   <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded'</span>,</div><div class="line">                   <span class="string">'Content-Length'</span>: <span class="string">'15'</span></div><div class="line">                   &#125;</div><div class="line">        <span class="comment"># 构造Post数据。</span></div><div class="line">        post_data = &#123;<span class="string">'password'</span>: self.password&#125;</div><div class="line"></div><div class="line">        <span class="comment"># 需要给Post数据编码</span></div><div class="line">        post_data = urllib.urlencode(post_data)</div><div class="line"></div><div class="line">        <span class="comment"># 通过urllib2提供的request方法来向指定Url发送我们构造的数据，并完成登录过程</span></div><div class="line">        request = urllib2.Request(self.__post_url, post_data, headers)</div><div class="line">        response = <span class="keyword">None</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            response = urllib2.urlopen(request)</div><div class="line">        <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</div><div class="line">            <span class="keyword">if</span> hasattr(e, <span class="string">'code'</span>):</div><div class="line">                <span class="keyword">return</span> <span class="string">'LOGIN ERROR CODE'</span>, e.code</div><div class="line">            <span class="keyword">elif</span> hasattr(e, <span class="string">'reason'</span>):</div><div class="line">                <span class="keyword">return</span> <span class="string">'LOGIN ERROR REASON'</span>, e.reason</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            <span class="keyword">if</span> response:</div><div class="line">                <span class="keyword">print</span> <span class="string">'Login finish!'</span></div><div class="line">                self.is_login = <span class="keyword">True</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">(self, current_page, page_num, start_date, end_date=time.strftime<span class="params">(<span class="string">"%Y-%m-%d"</span>, time.localtime<span class="params">()</span>)</span>)</span>:</span></div><div class="line">        <span class="string">"""get summary json data"""</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'Getting data...'</span></div><div class="line">        <span class="keyword">if</span> self.is_login:</div><div class="line">            data_url = <span class="string">'https://web.umeng.com/main.php?c=traf&amp;a=domain&amp;ajax=module=summary|module=inputList|module=innerList|module=refererDomainList_orderBy=pv_orderType=-1_currentPage=%d_pageType=%d&amp;siteid=%s&amp;st=%s&amp;et=%s&amp;domainCondType=&amp;itemName=&amp;itemNameType=&amp;itemVal=&amp;siteType='</span> % (current_page, page_num, self.site_id, start_date, end_date)</div><div class="line">            response = <span class="keyword">None</span></div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                response = urllib2.urlopen(data_url)</div><div class="line">            <span class="keyword">except</span> urllib2.URLError <span class="keyword">as</span> e:</div><div class="line">                <span class="keyword">if</span> hasattr(e, <span class="string">'code'</span>):</div><div class="line">                    <span class="keyword">return</span> <span class="string">'GETDATA ERROR CODE'</span>, e.code</div><div class="line">                <span class="keyword">elif</span> hasattr(e, <span class="string">'reason'</span>):</div><div class="line">                    <span class="keyword">return</span> <span class="string">'GETDATA ERROR REASON'</span>, e.reason</div><div class="line">            <span class="keyword">finally</span>:</div><div class="line">                <span class="keyword">if</span> response:</div><div class="line">                    <span class="keyword">return</span> response.read()</div><div class="line"></div><div class="line"><span class="comment"># 实例化测试</span></div><div class="line">x = CnzzCatch(<span class="string">'6666666666'</span>)  <span class="comment">#your website_id  here</span></div><div class="line">s = x.get_data(<span class="number">1</span>, <span class="number">30</span>, <span class="string">'2016-07-19'</span>)</div><div class="line"><span class="keyword">print</span> s</div></pre></td></tr></table></figure>
 
-&quot;&quot;&quot;
-# get json done
-# may be the important js
-# https://web.umeng.com/static/js/traf/referrals.js?t=201603181110
-&quot;&quot;&quot;
-import urllib
-import urllib2
-import cookielib
-import time
-
-
-# import pprint
-
-# 登录的主页面
-
-class CnzzCatch:
-    is_login = False
-
-    def __set_cookie(self):
-        &quot;&quot;&quot;add cookie listener&quot;&quot;&quot;
-        cj = cookielib.LWPCookieJar()
-        cookie_support = urllib2.HTTPCookieProcessor(cj)
-        opener = urllib2.build_opener(cookie_support, urllib2.HTTPHandler)
-        urllib2.install_opener(opener)
-
-    def __init__(self, site_id):
-        &quot;&quot;&quot;construct of logining to cnzz&quot;&quot;&quot;
-        self.site_id = site_id
-        self.__host_url = &apos;http://new.cnzz.com/v1/login.php?siteid=&apos; + self.site_id
-        self.__post_url = &apos;http://new.cnzz.com/v1/login.php?t=login&amp;siteid=&apos; + self.site_id
-        self.password = &apos;***&apos; #your password here
-        self.__set_cookie()
-        self.__login()
-
-    def __login(self):
-        &quot;&quot;&quot;login &amp; catch&quot;&quot;&quot;
-        if urllib2.urlopen(self.__host_url):
-            print &apos;Open host success!&apos;
-        # headers
-        headers = {&apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:14.0) Gecko/20100101 Firefox/14.0.1&apos;,
-                   &apos;Referer&apos;: &apos;http://new.cnzz.com/v1/login.php?siteid=&apos; + self.site_id,
-                   &apos;Accept&apos;: &apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&apos;,
-                   &apos;Accept-Language&apos;: &apos;en-US,en;q=0.7,zh;q=0.3&apos;,
-                   &apos;Accept-Encoding&apos;: &apos;zip, deflate&apos;,
-                   &apos;Connection&apos;: &apos;keep-alive&apos;,
-                   &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;,
-                   &apos;Content-Length&apos;: &apos;15&apos;
-                   }
-        # 构造Post数据。
-        post_data = {&apos;password&apos;: self.password}
-
-        # 需要给Post数据编码
-        post_data = urllib.urlencode(post_data)
-
-        # 通过urllib2提供的request方法来向指定Url发送我们构造的数据，并完成登录过程
-        request = urllib2.Request(self.__post_url, post_data, headers)
-        response = None
-        try:
-            response = urllib2.urlopen(request)
-        except urllib2.URLError as e:
-            if hasattr(e, &apos;code&apos;):
-                return &apos;LOGIN ERROR CODE&apos;, e.code
-            elif hasattr(e, &apos;reason&apos;):
-                return &apos;LOGIN ERROR REASON&apos;, e.reason
-        finally:
-            if response:
-                print &apos;Login finish!&apos;
-                self.is_login = True
-
-    def get_data(self, current_page, page_num, start_date, end_date=time.strftime(&quot;%Y-%m-%d&quot;, time.localtime())):
-        &quot;&quot;&quot;get summary json data&quot;&quot;&quot;
-        print &apos;Getting data...&apos;
-        if self.is_login:
-            data_url = &apos;https://web.umeng.com/main.php?c=traf&amp;a=domain&amp;ajax=module=summary|module=inputList|module=innerList|module=refererDomainList_orderBy=pv_orderType=-1_currentPage=%d_pageType=%d&amp;siteid=%s&amp;st=%s&amp;et=%s&amp;domainCondType=&amp;itemName=&amp;itemNameType=&amp;itemVal=&amp;siteType=&apos; % (current_page, page_num, self.site_id, start_date, end_date)
-            response = None
-            try:
-                response = urllib2.urlopen(data_url)
-            except urllib2.URLError as e:
-                if hasattr(e, &apos;code&apos;):
-                    return &apos;GETDATA ERROR CODE&apos;, e.code
-                elif hasattr(e, &apos;reason&apos;):
-                    return &apos;GETDATA ERROR REASON&apos;, e.reason
-            finally:
-                if response:
-                    return response.read()
-
-# 实例化测试
-x = CnzzCatch(&apos;6666666666&apos;)  #your website_id  here
-s = x.get_data(1, 30, &apos;2016-07-19&apos;)
-print s
-</code></pre>
       
     </div>
 
