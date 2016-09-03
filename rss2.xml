@@ -10,11 +10,11 @@
     <script xmlns="http://www.w3.org/1999/xhtml" src="./js/rss.js"></script>
     
     <description>发呆意淫，代码发烧，冥想笔记</description>
-    <pubDate>Sat, 03 Sep 2016 08:15:27 GMT</pubDate>
+    <pubDate>Sat, 03 Sep 2016 08:21:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>python实现webide,远程服务器运行shell命令</title>
+      <title>python实现webConsole,远程服务器运行shell命令</title>
       <link>http://jarbob.com/2016/09/03/pywebconsole/</link>
       <guid>http://jarbob.com/2016/09/03/pywebconsole/</guid>
       <pubDate>Sat, 03 Sep 2016 06:59:14 GMT</pubDate>
