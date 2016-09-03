@@ -1,0 +1,740 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="baidu-site-verification" content="fI3NfqDQoF" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webide,shell命令,python服务器," />
+
+
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="一江波,波又波" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言python 作为后端语言可以和其他后端语言一样可以实现很多功能,今天要做的是利用python能够执行shell命令的特性实现远程服务器执行shell命令.
+国际惯例,no photo say j8:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python实现webide,远程服务器运行shell命令">
+<meta property="og:url" content="http://jarbob.com/2016/09/03/pywebconsole/index.html">
+<meta property="og:site_name" content="一江波,波又波">
+<meta property="og:description" content="前言python 作为后端语言可以和其他后端语言一样可以实现很多功能,今天要做的是利用python能够执行shell命令的特性实现远程服务器执行shell命令.
+国际惯例,no photo say j8:">
+<meta property="og:image" content="http://jarbob.com/images/pyide.gif">
+<meta property="og:updated_time" content="2016-09-03T08:15:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python实现webide,远程服务器运行shell命令">
+<meta name="twitter:description" content="前言python 作为后端语言可以和其他后端语言一样可以实现很多功能,今天要做的是利用python能够执行shell命令的特性实现远程服务器执行shell命令.
+国际惯例,no photo say j8:">
+<meta name="twitter:image" content="http://jarbob.com/images/pyide.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6303172525329221000,
+      author: 'jarbob'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jarbob.com/2016/09/03/pywebconsole/"/>
+
+
+  <title> python实现webide,远程服务器运行shell命令 | 一江波,波又波 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一江波,波又波</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">jarbob's personl codesky</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                python实现webide,远程服务器运行shell命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-03T14:59:14+08:00" content="2016-09-03">
+              2016-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/03/pywebconsole/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/pywebconsole/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>python 作为后端语言可以和其他后端语言一样可以实现很多功能,今天要做的是利用python能够执行shell命令的特性实现远程服务器执行shell命令.</p>
+<p>国际惯例,no photo say j8:<br><img src="/images/pyide.gif" alt="img"></p>
+<a id="more"></a>
+<h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding: UTF-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> Queue</div><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># event = threading.Event()</span></div><div class="line"></div><div class="line">output_queue = Queue.Queue(maxsize=<span class="number">0</span>)</div><div class="line">input_queue = Queue.Queue(maxsize=<span class="number">0</span>)</div><div class="line"></div><div class="line">handle = []</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 单例模式,防止多次实例化</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span><span class="params">(type)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(cls, name, bases, dict)</span>:</span></div><div class="line">        super(Singleton, cls).__init__(name, bases, dict)</div><div class="line">        cls.instance = <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(cls, *args, **kw)</span>:</span></div><div class="line">        <span class="keyword">if</span> cls.instance <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">            cls.instance = super(Singleton, cls).__call__(*args, **kw)</div><div class="line">            <span class="keyword">return</span> cls.instance</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommandHandle</span><span class="params">(object)</span>:</span></div><div class="line">    __metaclass__ = Singleton</div><div class="line">    <span class="keyword">global</span> input_queue</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.__command = <span class="keyword">None</span></div><div class="line">        self.__handle()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__handle</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line"></div><div class="line">            <span class="keyword">if</span> input_queue.qsize() &gt; <span class="number">0</span>:</div><div class="line">                self.__command = input_queue.get()</div><div class="line">                <span class="keyword">print</span> self.__command</div><div class="line">                <span class="keyword">if</span> str(self.__command).find(<span class="string">'stop'</span>) != <span class="number">-1</span>:</div><div class="line">                    <span class="comment"># todo-me stop command</span></div><div class="line">                    <span class="comment"># if event.isSet():</span></div><div class="line">                    <span class="comment">#     event.clear()</span></div><div class="line">                    threading.Thread(target=stop).start()</div><div class="line"></div><div class="line">                    <span class="keyword">print</span> <span class="string">'---------stop------------'</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line"></div><div class="line">                    threading.Thread(target=run, args=(self.__command,)).start()</div><div class="line">                    <span class="comment"># event.set()</span></div><div class="line">            time.sleep(<span class="number">1</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(arg)</span>:</span></div><div class="line">    stop()</div><div class="line">    <span class="keyword">global</span> handle</div><div class="line">    handle.append(Console(arg))</div><div class="line">    <span class="keyword">for</span> h <span class="keyword">in</span> handle:</div><div class="line">        h.execute()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">stop</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">global</span> handle</div><div class="line">    <span class="keyword">if</span> len(handle):</div><div class="line"></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            <span class="keyword">for</span> h <span class="keyword">in</span> handle:</div><div class="line">                h.kill()</div><div class="line"></div><div class="line">        <span class="keyword">except</span> Exception, e:</div><div class="line">            <span class="comment"># print Exception, e</span></div><div class="line">            output_queue.put(e)</div><div class="line">        handle = []</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Console</span>:</span></div><div class="line">    <span class="keyword">global</span> output_queue</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, arg)</span>:</span></div><div class="line">        self.__arg = arg</div><div class="line">        self.__total = <span class="number">1</span></div><div class="line">        self.__obj = <span class="keyword">None</span></div><div class="line">        <span class="comment"># self.__queue = my_queue</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">execute</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># print self.__arg</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            obj = subprocess.Popen(self.__arg, shell=<span class="keyword">True</span>, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)</div><div class="line">            <span class="comment"># event.wait()</span></div><div class="line">        <span class="keyword">except</span> Exception, e:</div><div class="line">            <span class="keyword">print</span> e</div><div class="line">            output_queue.put(e)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.__obj = obj</div><div class="line">            data = obj.poll()</div><div class="line">            <span class="keyword">while</span> data <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">                line = obj.stdout.readline()</div><div class="line">                data = obj.poll()</div><div class="line">                line = line.strip()</div><div class="line">                <span class="keyword">print</span> <span class="string">'line '</span>, self.__total, line</div><div class="line">                output_queue.put(line)</div><div class="line">                self.__total += <span class="number">1</span></div><div class="line">                <span class="comment"># event.set()</span></div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            output_queue.put(<span class="number">0</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kill</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.__obj:</div><div class="line">            self.__obj.kill()</div><div class="line">            output_queue.put(<span class="string">'-'</span> * <span class="number">30</span> + <span class="string">'stop'</span> + <span class="string">'-'</span> * <span class="number">30</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(arg)</span>:</span></div><div class="line">    Console(arg).execute()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        <span class="keyword">if</span> output_queue.qsize() &gt; <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> output_queue.get()</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    test(<span class="string">'ping -c12 jarbob.com'</span>)</div><div class="line">    t = threading.Thread(target=test, args=(<span class="string">'ping -c12 jarbob.com'</span>,))</div><div class="line">    t.setDaemon(<span class="keyword">True</span>)</div><div class="line"></div><div class="line">    t.join()</div><div class="line"></div><div class="line">    t1 = threading.Thread(target=get_data)</div><div class="line">    t1.start()</div><div class="line">    t.start()</div></pre></td></tr></table></figure>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>利用两个队列放置输入和输出的代码,用一个线程运行<code>subprocess.Popen</code>执行shell命令,用另一个线程杀死进程,然后在前端用ajax做轮询回显。</p>
+<h2 id="获取源码"><a href="#获取源码" class="headerlink" title="获取源码"></a>获取源码</h2><ul>
+<li><a href="https://github.com/jarbob/PyWebConsole" target="_blank" rel="external">gayhub</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webide/" rel="tag">#webide</a>
+          
+            <a href="/tags/shell命令/" rel="tag">#shell命令</a>
+          
+            <a href="/tags/python服务器/" rel="tag">#python服务器</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/18/利用python爬取CNZZ域名来源数据/" rel="next" title="利用python爬取CNZZ域名来源数据">
+                <i class="fa fa-chevron-left"></i> 利用python爬取CNZZ域名来源数据
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/03/pywebconsole/"
+           data-title="python实现webide,远程服务器运行shell命令" data-url="http://jarbob.com/2016/09/03/pywebconsole/">
+          
+      </div>
+    
+  </div>
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="江波波" />
+          <p class="site-author-name" itemprop="name">江波波</p>
+          <p class="site-description motion-element" itemprop="description">发呆意淫，代码发烧，冥想笔记</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jarbob" target="_blank" title="Github">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/jarbob" target="_blank" title="Coding">
+                  
+                  Coding
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/jarbob" target="_blank" title="Weibo">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/jiangboo" target="_blank" title="Zhihu">
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心代码"><span class="nav-number">2.</span> <span class="nav-text">核心代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取源码"><span class="nav-number">4.</span> <span class="nav-text">获取源码</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+    <div class="my_logo img-responsive center-block">
+      <img src="/images/my_logo.png" alt="江波波">
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="author" itemprop="copyrightHolder">江波波的个人主页. All rights reserved.</span>
+
+  <style>#cnzz_span img{display: inline}</style>
+  <span id="cnzz_span">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259919831'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1259919831%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </span>
+</div>
+
+<div class="powered-by">
+  感谢 <a class="theme-link" href="http://hexo.io">Hexo</a> 涡轮增压发动机的强力驱动
+
+
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jarbob"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
