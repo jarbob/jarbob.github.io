@@ -1548,7 +1548,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff1d;
+  background: #13ffe8;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2422,6 +2422,7 @@ hr {
   width: 90%;
 /*font: 11pt/1.0 '微软雅黑';
   color : white;*/
+  margin: 0 auto;
 }
 .appqrc {
   width: 150px;
