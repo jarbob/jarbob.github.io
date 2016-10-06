@@ -1548,7 +1548,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8cc812;
+  background: #ffff1d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2423,7 +2423,10 @@ hr {
 /*font: 11pt/1.0 '微软雅黑';
   color : white;*/
 }
-.my_logo .appqrc {
+.appqrc {
   width: 150px;
   margin: 0 auto;
+}
+.appqrc p {
+  text-align: center;
 }
