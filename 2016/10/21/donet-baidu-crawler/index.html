@@ -1,0 +1,783 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="baidu-site-verification" content="fI3NfqDQoF" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="c#,spider,crawler,exe,HtmlAgilityPack," />
+
+
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="一江波,波又波" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="为什么用c#?
+因为要在windows底下用[哈哈]
+最主要的原因是python的多线程太糟糕了,没有绝对意义上的结束线程
+
+先来一发图片:
+接下来说说一些重要的代码:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用c#制作百度多线程爬虫软件">
+<meta property="og:url" content="http://jarbob.com/2016/10/21/donet-baidu-crawler/index.html">
+<meta property="og:site_name" content="一江波,波又波">
+<meta property="og:description" content="为什么用c#?
+因为要在windows底下用[哈哈]
+最主要的原因是python的多线程太糟糕了,没有绝对意义上的结束线程
+
+先来一发图片:
+接下来说说一些重要的代码:">
+<meta property="og:image" content="http://jarbob.com/images/bd_crawler.jpg">
+<meta property="og:updated_time" content="2016-10-21T10:15:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用c#制作百度多线程爬虫软件">
+<meta name="twitter:description" content="为什么用c#?
+因为要在windows底下用[哈哈]
+最主要的原因是python的多线程太糟糕了,没有绝对意义上的结束线程
+
+先来一发图片:
+接下来说说一些重要的代码:">
+<meta name="twitter:image" content="http://jarbob.com/images/bd_crawler.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6303172525329221000,
+      author: 'jarbob'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jarbob.com/2016/10/21/donet-baidu-crawler/"/>
+
+
+  <title> 利用c#制作百度多线程爬虫软件 | 一江波,波又波 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">一江波,波又波</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">jarbob's personl codesky</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          
+            <a href="/" rel="section">
+          
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          
+            <a href="/categories" rel="section">
+          
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          
+            <a href="/archives" rel="section">
+          
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          
+            <a href="/tags" rel="section">
+          
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          
+            <a href="/about" rel="section">
+          
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用c#制作百度多线程爬虫软件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-21T17:38:34+08:00" content="2016-10-21">
+              2016-10-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c#</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/21/donet-baidu-crawler/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/donet-baidu-crawler/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="为什么用c"><a href="#为什么用c" class="headerlink" title="为什么用c#?"></a>为什么用c#?</h2><ul>
+<li>因为要在windows底下用[哈哈]</li>
+<li>最主要的原因是python的多线程太糟糕了,没有绝对意义上的结束线程</li>
+</ul>
+<p>先来一发图片:<br><img src="/images/bd_crawler.jpg" alt="img"></p>
+<p>接下来说说一些重要的代码:<br><a id="more"></a></p>
+<h2 id="用到的库-HtmlAgilityPack"><a href="#用到的库-HtmlAgilityPack" class="headerlink" title="用到的库 - HtmlAgilityPack"></a>用到的库 - <a href="http://htmlagilitypack.codeplex.com/" target="_blank" rel="external">HtmlAgilityPack</a></h2><p>请求页面原本是用HttpRequester封装了类的,后来在做解析的时候加入了这个库,发现还自带请求方法,所以就直接调用了。 </p>
+<h3 id="请求和解析过程"><a href="#请求和解析过程" class="headerlink" title="请求和解析过程"></a>请求和解析过程</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> HtmlAgilityPack;</div><div class="line"><span class="keyword">using</span> System;</div><div class="line"><span class="keyword">using</span> System.Collections;</div><div class="line"><span class="keyword">using</span> System.Text;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">Collecting.Controller</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> <span class="title">Spider</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">UrlEncode</span>(<span class="params"><span class="keyword">string</span> str</span>)</span></div><div class="line">        &#123;</div><div class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div><div class="line">            <span class="keyword">byte</span>[] byStr = System.Text.Encoding.UTF8.GetBytes(str); <span class="comment">//默认是System.Text.Encoding.Default.GetBytes(str)</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; byStr.Length; i++)</div><div class="line">            &#123;</div><div class="line">                sb.Append(<span class="string">@"%"</span> + Convert.ToString(byStr[i], <span class="number">16</span>));</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">return</span> (sb.ToString());</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Hashtable <span class="title">MainProc</span>(<span class="params"><span class="keyword">string</span> keyword, <span class="keyword">int</span> page</span>)</span></div><div class="line">        &#123;</div><div class="line">            <span class="comment">//string s = Spider.GetResponseHtml("http://www.baidu.com");</span></div><div class="line">            HtmlWeb hw = <span class="keyword">new</span> HtmlWeb();</div><div class="line">            <span class="keyword">string</span> url = <span class="string">@"https://www.baidu.com/s?wd=&#123;0&#125;&amp;pn=&#123;1&#125;&amp;tn=baiduhome_pg&amp;ie=utf-8&amp;usm=4&amp;rsv_idx=2&amp;rsv_pq=d0ae91a100016dc4&amp;rsv_t=cf77fDsHQo3QeQI2%2B2s4Eh3ammVV0GnDRj%2BsSQ4zgyqk4MBS6nPqzAoCKYx6bHFcFZ5V"</span>;</div><div class="line">            url = <span class="keyword">string</span>.Format(url, UrlEncode(keyword), (page - <span class="number">1</span>) * <span class="number">10</span>);<span class="comment">//20代表第3页</span></div><div class="line">            HtmlDocument doc = hw.Load(url);</div><div class="line"></div><div class="line">            DocumentWithLinks bd = <span class="keyword">new</span> DocumentWithLinks(doc);</div><div class="line"></div><div class="line">            <span class="comment">//TODO：完成哈希表的读取</span></div><div class="line">            <span class="keyword">return</span> bd.LinksTable;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DocumentWithLinks</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">private</span> Hashtable _linksTable;</div><div class="line"></div><div class="line">        <span class="keyword">public</span> Hashtable LinksTable</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> _linksTable; &#125;</div><div class="line">            <span class="keyword">set</span> &#123; _linksTable = <span class="keyword">value</span>; &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">string</span> _title;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">string</span> _href;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">private</span> HtmlDocument _doc;</div><div class="line">        <span class="keyword">private</span> HtmlDocument _tmpDoc;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">DocumentWithLinks</span>(<span class="params">HtmlDocument doc</span>)</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">this</span>._title = <span class="keyword">this</span>._href = <span class="string">""</span>;</div><div class="line">            _tmpDoc = <span class="keyword">new</span> HtmlDocument();</div><div class="line">            _linksTable = <span class="keyword">new</span> Hashtable();</div><div class="line">            <span class="keyword">if</span> (doc == <span class="literal">null</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="string">"doc"</span>);</div><div class="line">            &#125;</div><div class="line">            _doc = doc;</div><div class="line">            GetLinksAndTitles();</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GetLinksAndTitles</span>(<span class="params"></span>)</span></div><div class="line">        &#123;</div><div class="line"></div><div class="line">            HtmlNodeCollection atts = _doc.DocumentNode.SelectNodes(<span class="string">"//h3[@class='t']/a"</span>);</div><div class="line">            <span class="keyword">if</span> (atts == <span class="literal">null</span>)</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line">            <span class="keyword">foreach</span> (HtmlNode node <span class="keyword">in</span> atts)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">this</span>._title = node.InnerText;</div><div class="line">                <span class="keyword">this</span>._href = GetHrefLink(node.OuterHtml);</div><div class="line">                <span class="keyword">this</span>._href = Uri.GetLocation(<span class="keyword">this</span>._href);</div><div class="line">                <span class="keyword">this</span>._linksTable.Add(<span class="keyword">this</span>._title + (i++).ToString(), <span class="keyword">this</span>._href);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">string</span> <span class="title">GetHrefLink</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></div><div class="line">        &#123;</div><div class="line"></div><div class="line">            HtmlDocument doc = <span class="keyword">this</span>._tmpDoc;</div><div class="line">            doc.LoadHtml(name);</div><div class="line">            HtmlNode hrefNode = doc.DocumentNode.SelectSingleNode(<span class="string">".//a[@href]"</span>);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (hrefNode != <span class="literal">null</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> hrefNode.Attributes[<span class="string">"href"</span>].Value;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用到了<code>HtmlWeb</code> 和 <code>HtmlDocument</code>两个对象。<br>解析要用到选择器,这个库用的是<code>xPath</code>选择元素。  </p>
+<h3 id="长链接缩短"><a href="#长链接缩短" class="headerlink" title="长链接缩短"></a>长链接缩短</h3><p>百度采集过来的链接要经过重定向才能到指定的链接,用了偷懒的方法:<code>禁止重定向</code>响应文本中截取了字符串。具体实现方法如下:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"><span class="keyword">using</span> System.Collections.Generic;</div><div class="line"><span class="keyword">using</span> System.IO;</div><div class="line"><span class="keyword">using</span> System.Linq;</div><div class="line"><span class="keyword">using</span> System.Net;</div><div class="line"><span class="keyword">using</span> System.Text;</div><div class="line"><span class="keyword">using</span> System.Text.RegularExpressions;</div><div class="line"><span class="keyword">using</span> System.Threading.Tasks;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">Collecting.Controller</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> <span class="title">Uri</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">GetLocation</span>(<span class="params"><span class="keyword">string</span> u</span>)</span></div><div class="line">        &#123;</div><div class="line">            HttpWebRequest myHttpWebRequest = (HttpWebRequest)HttpWebRequest.Create(u);</div><div class="line">            myHttpWebRequest.AllowAutoRedirect = <span class="literal">false</span>;</div><div class="line">            HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();</div><div class="line">            StreamReader streamReader = <span class="keyword">new</span> StreamReader(myHttpWebResponse.GetResponseStream());</div><div class="line">            <span class="keyword">string</span> responseContent = streamReader.ReadToEnd();</div><div class="line">            responseContent = Between(responseContent, <span class="string">";URL='"</span>, <span class="string">"'"</span>);</div><div class="line">            <span class="comment">//Console.WriteLine(responseContent);</span></div><div class="line">            <span class="keyword">if</span> (responseContent == <span class="string">""</span>)</div><div class="line">                <span class="keyword">return</span> u;</div><div class="line">            <span class="keyword">return</span> responseContent;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></div><div class="line">        <span class="comment"><span class="doctag">///</span> 取文本中间内容</span></div><div class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></div><div class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="str"&gt;</span>原文本<span class="doctag">&lt;/param&gt;</span></span></div><div class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="leftstr"&gt;</span>左边文本<span class="doctag">&lt;/param&gt;</span></span></div><div class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="rightstr"&gt;</span>右边文本<span class="doctag">&lt;/param&gt;</span></span></div><div class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>返回中间文本内容<span class="doctag">&lt;/returns&gt;</span></span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">Between</span>(<span class="params"><span class="keyword">string</span> str, <span class="keyword">string</span> leftstr, <span class="keyword">string</span> rightstr</span>)</span></div><div class="line">        &#123;</div><div class="line"></div><div class="line">            <span class="keyword">int</span> i = str.IndexOf(leftstr) + leftstr.Length;</div><div class="line">            <span class="keyword">string</span> temp = str.Substring(i, str.IndexOf(rightstr, i) - i);</div><div class="line">            <span class="keyword">if</span> (temp == <span class="string">""</span>)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> str;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> temp;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>禁止重定向就这句咯<code>HttpWebRequest.AllowAutoRedirect = false</code></p>
+<h2 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h2><ul>
+<li>批量导入关键字批量采集</li>
+<li>链接去重复</li>
+<li>浏览器批量打开链接</li>
+<li>支持导出链接<br>具体用途,请自行意淫吧,哈哈~~~</li>
+</ul>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><a href="https://github.com/jarbob/donet_Baidu_crawler" target="_blank" rel="external">gayhub</a></p>
+<h2 id="预告"><a href="#预告" class="headerlink" title="预告"></a>预告</h2><p>下一篇将讲解如何解析js加载过后的网页文件</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag">#c#</a>
+          
+            <a href="/tags/spider/" rel="tag">#spider</a>
+          
+            <a href="/tags/crawler/" rel="tag">#crawler</a>
+          
+            <a href="/tags/exe/" rel="tag">#exe</a>
+          
+            <a href="/tags/HtmlAgilityPack/" rel="tag">#HtmlAgilityPack</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/03/pywebconsole/" rel="next" title="python实现webConsole,远程服务器运行shell命令">
+                <i class="fa fa-chevron-left"></i> python实现webConsole,远程服务器运行shell命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/21/donet-baidu-crawler/"
+           data-title="利用c#制作百度多线程爬虫软件" data-url="http://jarbob.com/2016/10/21/donet-baidu-crawler/">
+          
+      </div>
+    
+  </div>
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="江波波" />
+          <p class="site-author-name" itemprop="name">江波波</p>
+          <p class="site-description motion-element" itemprop="description">发呆意淫，代码发烧，冥想笔记</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/rss2.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jarbob" target="_blank" title="Github">
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://coding.net/u/jarbob" target="_blank" title="Coding">
+                  
+                  Coding
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/jarbob" target="_blank" title="Weibo">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/jiangboo" target="_blank" title="Zhihu">
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用c"><span class="nav-number">1.</span> <span class="nav-text">为什么用c#?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用到的库-HtmlAgilityPack"><span class="nav-number">2.</span> <span class="nav-text">用到的库 - HtmlAgilityPack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求和解析过程"><span class="nav-number">2.1.</span> <span class="nav-text">请求和解析过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长链接缩短"><span class="nav-number">2.2.</span> <span class="nav-text">长链接缩短</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现功能"><span class="nav-number">3.</span> <span class="nav-text">实现功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码"><span class="nav-number">4.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预告"><span class="nav-number">5.</span> <span class="nav-text">预告</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+    <div class="my_logo">
+      <img class="img-responsive" src="/images/my_logo.png" alt="江波波">
+    </div>
+    <div class="appqrc">
+      
+        <img class="img-responsive" src="/images/appQrc.png" alt="扫码下载安卓app">
+        <p>扫码下载安卓app</p>
+      
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="author" itemprop="copyrightHolder">江波波的个人主页. All rights reserved.</span>
+
+  <style>#cnzz_span img{display: inline}</style>
+  <span id="cnzz_span">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259919831'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1259919831%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </span>
+</div>
+
+<div class="powered-by">
+  感谢 <a class="theme-link" href="http://hexo.io">Hexo</a> 涡轮增压发动机的强力驱动
+
+
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jarbob"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
