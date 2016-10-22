@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jarbob.com/2016/10/22/donet-selenium/</loc>
+    
+    <lastmod>2016-10-22T15:26:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jarbob.com/2016/10/22/iframe-noscroll-fullscreen/</loc>
+    
+    <lastmod>2016-10-22T09:08:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jarbob.com/2016/10/21/donet-baidu-crawler/</loc>
     
     <lastmod>2016-10-21T10:15:42.000Z</lastmod>
@@ -58,14 +72,14 @@
   </url>
   
   <url>
-    <loc>http://jarbob.com/2016/08/18/%E5%88%A9%E7%94%A8python%E7%88%AC%E5%8F%96CNZZ%E5%9F%9F%E5%90%8D%E6%9D%A5%E6%BA%90%E6%95%B0%E6%8D%AE/</loc>
+    <loc>http://jarbob.com/2016/07/15/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E4%B8%8B%E7%94%A8hexo-generator-feed%E9%85%8D%E7%BD%AE%E7%9A%84%E7%9A%84rss%E7%A9%BF%E4%B8%8A%E5%A4%96%E8%A1%A3/</loc>
     
     <lastmod>2016-08-24T08:04:10.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jarbob.com/2016/07/15/%E7%BB%99hexo%E5%8D%9A%E5%AE%A2%E4%B8%8B%E7%94%A8hexo-generator-feed%E9%85%8D%E7%BD%AE%E7%9A%84%E7%9A%84rss%E7%A9%BF%E4%B8%8A%E5%A4%96%E8%A1%A3/</loc>
+    <loc>http://jarbob.com/2016/08/18/%E5%88%A9%E7%94%A8python%E7%88%AC%E5%8F%96CNZZ%E5%9F%9F%E5%90%8D%E6%9D%A5%E6%BA%90%E6%95%B0%E6%8D%AE/</loc>
     
     <lastmod>2016-08-24T08:04:10.000Z</lastmod>
     
